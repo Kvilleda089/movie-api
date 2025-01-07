@@ -4,6 +4,7 @@ import { Database } from '../database/database';
 import { envs } from '../config/env';
 import movieRouter from './movies/movie.router';
 import path from 'path';
+import { setupSwager } from '../documentation/swagger';
 
 
 export class Server {
@@ -18,6 +19,7 @@ export class Server {
         this.database = Database.getInstance();
         this.config();
         this.routes();
+        setupSwager(this.app);
     }
 
     private config(): void {
